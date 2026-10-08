@@ -1,0 +1,61 @@
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      TZ: Asia/Tokyo
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      retries: 10
+
+  wordpress:
+    image: wordpress:7.1-php8.3-apache
+    restart: unless-stopped
+    # ホストのユーザーと同じ uid/gid で動かす。
+    # テーマ・uploads・export/ の所有者がホスト側とずれないようにするため。
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    depends_on:
+      db:
+        condition: service_healthy
+    # コンテナ内の Apache も 8000 番で待ち受ける（docker/apache/listen-8000.conf）。
+    # サイト URL（http://localhost:8000）にコンテナ自身からもアクセスできないと、
+    # Simply Static や WP-Cron のループバック通信が失敗するため。
+    ports:
+      - "8000:8000"
+    environment: &wp_env
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DEBUG: 1
+      TZ: Asia/Tokyo
+    volumes: &wp_volumes
+      - wp_core:/var/www/html
+      - ./wp-content/themes/portfolio:/var/www/html/wp-content/themes/portfolio
+      - ./export:/var/www/export
+      - ./docker/apache/listen-8000.conf:/etc/apache2/conf-enabled/zz-listen-8000.conf:ro
+
+  wpcli:
+    image: wordpress:cli-2.12-php8.3
+    profiles: ["cli"]          # up では起動せず、run のときだけ使う
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    # wordpress コンテナとネットワークを共有し、localhost:8000 でサイトに届くようにする
+    network_mode: "service:wordpress"
+    depends_on:
+      - wordpress
+    environment:
+      <<: *wp_env
+      HOME: /tmp
+      WORDPRESS_DEBUG: ""      # WP-CLI の出力が非推奨の警告で埋まるので切る
+    volumes: *wp_volumes
+
+volumes:
+  db_data:
+  wp_core:
