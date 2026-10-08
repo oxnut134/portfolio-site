@@ -44,8 +44,32 @@ wp rewrite structure '/%postname%/'
 wp option update default_comment_status closed
 wp option update default_ping_status closed
 
-# テーマ
+# テーマ（作品の投稿タイプはテーマが登録するので、有効化のあとに URL のルールを作り直す）
 wp theme activate portfolio
+wp rewrite flush
+
+# プロフィールの固定ページ（なければ仮の内容で作る。本文は管理画面で書き換える）
+if [ -z "$(wp post list --post_type=page --name=profile --post_status=any --format=ids)" ]; then
+  wp post create - --post_type=page --post_name=profile --post_title='プロフィール' --post_status=publish <<'HTML'
+<!-- wp:heading -->
+<h2 class="wp-block-heading">経歴</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>（仮）ここに経歴を書きます。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">スキル</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>（仮）ここにスキルを書きます。</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+HTML
+fi
 
 # プラグイン（足すときはここに追記する）
 wp plugin install simply-static --activate
@@ -56,6 +80,12 @@ wp option patch update simply-static delivery_method local
 wp option patch update simply-static local_dir /var/www/export/
 wp option patch update simply-static destination_url_type relative
 wp option patch update simply-static clear_directory_before_export true --format=json
+wp option patch update simply-static generate_404 true --format=json
+# リンクをたどって見つかったファイルだけを書き出す。
+# true だと wp-includes が丸ごとコピーされ、約 70MB になる
+wp option patch update simply-static smart_crawl false --format=json
+# 著者ページは書き出さない（テーマ側でも 404 にしている）
+wp option patch update simply-static urls_to_exclude '/author/'
 
 echo
 echo "完了: $SITE_URL （管理画面: $SITE_URL/wp-admin）"

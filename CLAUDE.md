@@ -18,6 +18,11 @@ WordPress で作るポートフォリオサイト。手元の Docker で作り�
 
 ## 構成
 - 自作テーマ: wp-content/themes/portfolio/ （編集するのは基本ここだけ）
+  - クラシックテーマ（PHP テンプレート）、素の CSS 1 ファイル、JavaScript なし
+  - 作品は投稿タイプ work（/works/<スラッグ>/）、使用技術はタクソノミー tech。
+    デモ URL などの入力欄も inc/works.php で自作している（プラグインなし）
+  - 一言の自己紹介とフッターのリンクは inc/site-data.php（管理画面では変えられない）
+  - 作品とプロフィールの本文・画像は DB にある（Git 管理外。backup.sh で守る）
 - WordPress 本体・プラグイン・uploads・DB は Docker ボリューム（Git 管理外）
 - 設定の変更は管理画面で手作業せず scripts/setup.sh に WP-CLI で書く
 - プラグインを足すときも setup.sh に追記する
@@ -33,7 +38,10 @@ WordPress で作るポートフォリオサイト。手元の Docker で作り�
 - 表示時に admin-ajax / REST API を呼ばない
 - URL は直書きせず home_url() / get_theme_file_uri() などを使う
 - パーマリンクは /%postname%/
-- 書き出しは相対パス。どこからもリンクされていないページは書き出されない
+- 書き出しは / 始まりのパス。どこからもリンクされていないページやファイルは書き出されない
+- 不要な出力は inc/static-export.php で止めている。ブロックエディターの CSS
+  （wp-block-library など）は本文の表示に必要なので消さない
+- 著者ページはテーマで 404 にし、Simply Static でも /author/ を除外している
 
 ## Git
 - .env, export/, backups/ はコミットしない
