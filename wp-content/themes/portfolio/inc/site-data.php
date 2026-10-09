@@ -10,7 +10,16 @@ function portfolio_site_data() {
 
 		// プロフィールへの導線に添える文（仮）
 		'profile_lead' => '経歴と、扱える技術をまとめています。',
+		// プロフィールの履歴
+		'career' => array(
+			array(
+				'period' => '1984～1998',
+				'title'  => 'FA用プリンターソフトウェア開発',
+				'text'   => '自動車工場向けFAプリンター、ラベルプリンターなどの周辺ソフト、アプリケーションソフトを開発。
+				ユーザーサポートも担当。',
+			),
 
+		),
 		// 全ページのフッターに出すリンク。ランサーズと CrowdWorks の URL は仮
 		'footer_links' => array(
 			array(

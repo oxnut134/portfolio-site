@@ -56,6 +56,16 @@ services:
       WORDPRESS_DEBUG: ""      # WP-CLI の出力が非推奨の警告で埋まるので切る
     volumes: *wp_volumes
 
+  adminer:
+    image: adminer
+    profiles: ["tools"]
+    depends_on:
+      - db
+    ports:
+      - "127.0.0.1:8081:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+      
 volumes:
   db_data:
   wp_core:
