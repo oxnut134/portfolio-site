@@ -1,3 +1,4 @@
 .env
 export/
 backups/
+.wrangler/
