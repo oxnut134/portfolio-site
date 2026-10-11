@@ -29,7 +29,7 @@ function portfolio_site_data() {
 　利用技術：Next.js/React/TypeScript,/postgreSQL
 　　　　　　Render/Vercel/googleMapsAPI/AI/Claude
 2026年6月～現在
-　Webサービス開発の実務案件に参画。PHPを用いた開発、GitHub上での　　PR作成・レビュー対応、テストコードの拡充等を継続的に担当（稼働　　中）  
+　Webサービス開発の実務案件に参画。PHPを用いた開発、GitHub上でのPR作成・レビュー対応、テストコードの拡充等を継続的に担当  
 ',
 			),
 
