@@ -19,14 +19,25 @@ function portfolio_site_data() {
 				ユーザーサポートも担当。',
 			),
 			array(
+				'period' => '1998～2008',
+				'title'  => '新商品開発',
+				'text'   => 'RFID・ICカード関連の新商品の企画・開発を担当し、マーケティングや営業も含めて商品化まで携わる。
+				IT関連企業等に採用・販売実績あり',
+			),
+			array(
+				'period' => '2008～2024',
+				'title'  => '事務局運営・一般事務',
+				'text'   => '会員企業との連絡・調整、会議や委員会の運営、その他一般事務',
+			),
+			array(
 				'period' => '2024～2026',
-				'title'  => 'WEBアプリ開発',
-				'text'   => '2025年3月～9月　coachtech受講(HTML/CSS/Laravel/PHP/MySQL/Docker,等)
-2025年10月～12月　frontend習得(JavaScrip/Next.js/React/TypeScript, 等）
+				'title'  => 'Webアプリ開発',
+				'text'   => '2025年3月～9月　COACHTECH受講(HTML/CSS/Laravel/PHP/MySQL/Docker,等)
+2025年10月～12月　フロントエンド習得(JavaScript/Next.js/React/TypeScript, 等）
 2026年1月　プロテスト合格
 2026年1月～6月
 　アプリ開発・ポートフォリオ作成（shop-reminder, wandering-log,他）
-　利用技術：Next.js/React/TypeScript,/postgreSQL
+　利用技術：Next.js/React/TypeScript,/postgreSQL/MySQL
 　　　　　　Render/Vercel/googleMapsAPI/AI/Claude
 2026年6月～現在
 　Webサービス開発の実務案件に参画。PHPを用いた開発、GitHub上でのPR作成・レビュー対応、テストコードの拡充等を継続的に担当  
