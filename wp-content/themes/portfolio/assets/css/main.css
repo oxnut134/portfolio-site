@@ -273,13 +273,40 @@ code {
 	border-radius: var(--radius);
 	background: var(--color-bg);
 	overflow: hidden;
-	transition: border-color 0.15s, box-shadow 0.15s;
+	transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
+/* ホバーとキーボードで選んだとき：枠線（1px）の外に 2px の線を重ねて 3px に見せ、少し浮かせる。
+   box-shadow と transform は周りのレイアウトを動かさない */
 .work-card:hover,
 .work-card:focus-within {
 	border-color: var(--color-key);
-	box-shadow: 0 4px 16px rgb(0 0 0 / 0.06);
+	box-shadow: 0 0 0 2px var(--color-key), 0 8px 20px rgb(0 0 0 / 0.08);
+	transform: translateY(-3px);
+}
+
+/* :has() が使えるブラウザでは、マウスでクリックしたときのフォーカスでは出さず、
+   キーボードで選んだとき（:focus-visible）だけにする。カードの線が目印になるので、
+   リンク自身の枠（カードの overflow: hidden で切れる）は消す */
+@supports selector(:has(*)) {
+	.work-card:focus-within:not(:hover):not(:has(:focus-visible)) {
+		border-color: var(--color-border);
+		box-shadow: none;
+		transform: none;
+	}
+
+	.work-card__link:focus-visible {
+		outline: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.work-card,
+	.work-card:hover,
+	.work-card:focus-within {
+		transition: none;
+		transform: none;
+	}
 }
 
 .work-card__link {
