@@ -245,7 +245,6 @@ code {
 }
 
 .hero__intro {
-	max-width: 36em;
 	margin: 1rem 0 0;
 	color: var(--color-text-muted);
 	font-size: 1.125rem;
@@ -279,6 +278,7 @@ code {
 }
 
 .work-card__image {
+	position: relative;
 	aspect-ratio: 16 / 10;
 	border-bottom: 1px solid var(--color-border);
 	background: var(--color-bg-muted);
@@ -289,6 +289,20 @@ code {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+/* 種別（実務・個人開発など）。画像の左上に重ね、カードの高さを変えない */
+.work-card__kind {
+	position: absolute;
+	top: 0.5rem;
+	left: 0.5rem;
+	padding: 0 0.5rem;
+	border-radius: 4px;
+	background: var(--color-text);
+	color: #ffffff;
+	font-size: 0.75rem;
+	font-weight: 700;
+	line-height: 1.7;
 }
 
 .work-card__body {
@@ -305,6 +319,84 @@ code {
 	color: var(--color-text-muted);
 	font-size: 0.9375rem;
 	line-height: 1.7;
+}
+
+/* トップを画面の高さ（100dvh）に収める。PC 幅のみ（スマホはスクロール）。
+   中身が収まらない低い画面では、ページがそのままスクロールする */
+@media (min-width: 900px) {
+	.home {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh; /* dvh 非対応ブラウザ用 */
+		min-height: 100dvh;
+	}
+
+	.home .site-main {
+		flex: 1;
+		min-height: 0;
+		padding-bottom: 0;
+	}
+
+	.home .hero {
+		padding-block: 1rem 0.5rem;
+	}
+
+	.home .hero__title {
+		font-size: 1.75rem;
+	}
+
+	.home .hero__intro {
+		margin-top: 0.5rem;
+		font-size: 0.9375rem;
+		line-height: 1.7;
+	}
+
+	.home #works {
+		padding-block: 1rem;
+	}
+
+	.home #works .section__title {
+		margin-bottom: 0.75rem;
+		font-size: 1.125rem;
+	}
+
+	/* プロフィールへはヘッダーのメニューから行ける */
+	.home .section--muted {
+		display: none;
+	}
+
+	/* 作品カードは幅を固定して左から並べる（1366px 幅で 3 枚）。小さめの文字で詰める */
+	.home .work-grid {
+		grid-template-columns: repeat(auto-fill, 280px);
+		gap: 1rem;
+	}
+
+	.home .work-card__body {
+		padding: 0.625rem 0.75rem 0.75rem;
+	}
+
+	.home .work-card__title {
+		font-size: 0.9375rem;
+	}
+
+	.home .work-card__excerpt {
+		margin: 0.2rem 0 0.5rem;
+		font-size: 0.8125rem;
+		line-height: 1.6;
+	}
+
+	.home .work-card .tag-list {
+		gap: 0.25rem;
+	}
+
+	.home .work-card .tag {
+		padding: 0 0.45rem;
+		font-size: 0.6875rem;
+	}
+
+	.home .site-footer__inner {
+		padding-block: 0.75rem;
+	}
 }
 
 /* ---------- 作品詳細 ---------- */

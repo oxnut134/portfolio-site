@@ -4,6 +4,7 @@
  */
 
 $techs = get_the_terms( get_the_ID(), 'tech' );
+$kind  = portfolio_work_meta( '_work_kind' );
 ?>
 <article class="work-card">
 	<a class="work-card__link" href="<?php the_permalink(); ?>">
@@ -13,6 +14,9 @@ $techs = get_the_terms( get_the_ID(), 'tech' );
 				the_post_thumbnail( 'work-card', array( 'alt' => '' ) );
 			}
 			?>
+			<?php if ( $kind ) : ?>
+				<span class="work-card__kind"><?php echo esc_html( $kind ); ?></span>
+			<?php endif; ?>
 		</div>
 		<div class="work-card__body">
 			<h3 class="work-card__title"><?php the_title(); ?></h3>

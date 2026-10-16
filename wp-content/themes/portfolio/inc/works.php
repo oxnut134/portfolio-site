@@ -68,6 +68,12 @@ function portfolio_register_works() {
  */
 function portfolio_work_fields() {
 	return array(
+		'_work_kind'         => array(
+			'label'   => '種別',
+			'type'    => 'select',
+			'options' => array( '実務', '個人開発', '模擬案件' ),
+			'help'    => 'トップの作品カードに小さなラベルで出す。',
+		),
 		'_work_demo_url'     => array(
 			'label' => 'デモ URL',
 			'type'  => 'url',
@@ -111,7 +117,14 @@ function portfolio_render_work_meta_box( $post ) {
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $key ); ?>"><strong><?php echo esc_html( $field['label'] ); ?></strong></label><br>
-			<?php if ( 'textarea' === $field['type'] ) : ?>
+			<?php if ( 'select' === $field['type'] ) : ?>
+				<select id="<?php echo esc_attr( $key ); ?>" name="<?php echo esc_attr( $key ); ?>">
+					<option value="">（なし）</option>
+					<?php foreach ( $field['options'] as $option ) : ?>
+						<option value="<?php echo esc_attr( $option ); ?>" <?php selected( $value, $option ); ?>><?php echo esc_html( $option ); ?></option>
+					<?php endforeach; ?>
+				</select>
+			<?php elseif ( 'textarea' === $field['type'] ) : ?>
 				<textarea class="widefat" rows="3" id="<?php echo esc_attr( $key ); ?>" name="<?php echo esc_attr( $key ); ?>"><?php echo esc_textarea( $value ); ?></textarea>
 			<?php else : ?>
 				<input class="widefat" type="<?php echo esc_attr( $field['type'] ); ?>" id="<?php echo esc_attr( $key ); ?>" name="<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $value ); ?>">
@@ -142,6 +155,8 @@ function portfolio_save_work_meta( $post_id ) {
 
 		if ( 'url' === $field['type'] ) {
 			$value = esc_url_raw( trim( $raw ) );
+		} elseif ( 'select' === $field['type'] ) {
+			$value = in_array( $raw, $field['options'], true ) ? $raw : '';
 		} elseif ( 'textarea' === $field['type'] ) {
 			$value = sanitize_textarea_field( $raw );
 		} else {

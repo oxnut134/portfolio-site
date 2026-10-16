@@ -11,7 +11,7 @@ get_header();
 
 <section class="hero">
 	<div class="container">
-		<h1 class="hero__title"><?php bloginfo( 'name' ); ?></h1>
+		<h1 class="hero__title"><?php echo esc_html( $site['headline'] ); ?></h1>
 		<p class="hero__intro"><?php echo esc_html( $site['intro'] ); ?></p>
 	</div>
 </section>
