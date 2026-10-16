@@ -5,6 +5,9 @@
 
 function portfolio_site_data() {
 	return array(
+		// トップの <title> でサイト名の後ろに付ける文（「サイト名 | これ」になる）
+		'title_tagline' => 'Web エンジニア ポートフォリオ',
+
 		// トップの見出し
 		'headline'     => 'Next.js と Laravel で、設計から公開まで一貫して対応します。',
 

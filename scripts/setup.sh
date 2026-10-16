@@ -33,6 +33,9 @@ if ! wp core is-installed 2>/dev/null; then
   wp plugin delete hello akismet || true
 fi
 
+# サイト名（ヘッダー・<title>・フッターに出る）。インストール後に変えても当て直せるようにする
+wp option update blogname "$WP_TITLE"
+
 # 日本語
 wp language core install ja --activate
 wp option update timezone_string Asia/Tokyo

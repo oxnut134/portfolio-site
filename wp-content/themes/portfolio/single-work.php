@@ -1,7 +1,7 @@
 <?php
 /**
  * 作品詳細。
- * 上から: タイトルと一言の概要 → 使用技術 → デモ → 本文（概要、スクリーンショット、
+ * 上から: タイトルと一言の概要（＋リード文） → 使用技術 → デモ → 本文（概要、スクリーンショット、
  * 主な機能、工夫した点、制作の経緯）→ GitHub リンク。
  */
 
@@ -11,6 +11,7 @@ while ( have_posts() ) :
 	the_post();
 
 	$techs        = get_the_terms( get_the_ID(), 'tech' );
+	$lead         = portfolio_work_meta( '_work_lead' );
 	$demo_url     = portfolio_work_meta( '_work_demo_url' );
 	$demo_account = portfolio_work_meta( '_work_demo_account' );
 	$test_card    = portfolio_work_meta( '_work_test_card' );
@@ -22,6 +23,9 @@ while ( have_posts() ) :
 			<h1 class="page-header__title"><?php the_title(); ?></h1>
 			<?php if ( has_excerpt() ) : ?>
 				<p class="page-header__lead"><?php echo esc_html( get_the_excerpt() ); ?></p>
+			<?php endif; ?>
+			<?php if ( $lead ) : ?>
+				<p class="page-header__note"><?php echo nl2br( esc_html( $lead ) ); ?></p>
 			<?php endif; ?>
 		</header>
 

@@ -74,6 +74,11 @@ function portfolio_work_fields() {
 			'options' => array( '実務', '個人開発', '模擬案件' ),
 			'help'    => 'トップの作品カードに小さなラベルで出す。',
 		),
+		'_work_lead'         => array(
+			'label' => 'リード文（補足）',
+			'type'  => 'textarea',
+			'help'  => '作品ページのタイトルの下、抜粋の次に小さめに出す（制作の経緯など）。トップのカードには出ない。',
+		),
 		'_work_demo_url'     => array(
 			'label' => 'デモ URL',
 			'type'  => 'url',

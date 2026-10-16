@@ -27,6 +27,22 @@ function portfolio_enqueue_assets() {
 }
 
 /**
+ * <title> の形。トップは「サイト名 | 説明」、ほかは「ページ名 | サイト名」。
+ */
+add_filter( 'document_title_separator', 'portfolio_title_separator' );
+function portfolio_title_separator() {
+	return '|';
+}
+
+add_filter( 'document_title_parts', 'portfolio_title_parts' );
+function portfolio_title_parts( $parts ) {
+	if ( is_front_page() ) {
+		$parts['tagline'] = portfolio_site_data()['title_tagline'];
+	}
+	return $parts;
+}
+
+/**
  * <meta name="description"> に入れる文。抜粋があればそれ、なければ一言の自己紹介。
  */
 function portfolio_meta_description() {
