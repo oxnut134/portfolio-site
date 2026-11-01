@@ -248,7 +248,7 @@ code {
 /* ---------- トップ ---------- */
 
 .hero {
-	padding-block: 4.5rem 2rem;
+	padding-block: clamp(1.75rem, 4vw, 3rem);
 }
 
 .hero__title {
@@ -262,10 +262,14 @@ code {
 	font-size: 1.125rem;
 }
 
-/* 仕事の進め方。スマホ・タブレットは 2 列 × 2 段、PC は 4 列 */
-.process {
-	padding-block: 1.5rem;
+/* トップのセクションは余白と区切り線ではっきり分ける */
+.process,
+#works {
+	padding-block: clamp(1.75rem, 4vw, 3rem);
+	border-top: 1px solid var(--color-border);
 }
+
+/* 仕事の進め方。スマホ・タブレットは 2 列 × 2 段、PC は 4 列 */
 
 .process__list {
 	display: grid;
@@ -416,126 +420,15 @@ code {
 	line-height: 1.7;
 }
 
-/* トップを画面の高さ（100dvh）に収める。PC 幅のみ（スマホはスクロール）。
-   中身が収まらない低い画面では、ページがそのままスクロールする */
 @media (min-width: 900px) {
-	.home {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh; /* dvh 非対応ブラウザ用 */
-		min-height: 100dvh;
-	}
-
-	.home .site-main {
-		flex: 1;
-		min-height: 0;
-		padding-bottom: 0;
-	}
-
-	.home .hero {
-		padding-block: 1rem 0.5rem;
-	}
-
-	.home .hero__title {
-		font-size: 1.75rem;
-	}
-
-	.home .hero__intro {
-		margin-top: 0.5rem;
-		font-size: 0.9375rem;
-		line-height: 1.7;
-	}
-
-	.home #works {
-		padding-block: 1rem;
-	}
-
-	.home #works .section__title,
-	.home .process .section__title {
-		margin-bottom: 0.75rem;
-		font-size: 1.125rem;
-	}
-
-	/* 仕事の進め方も 1 画面に収めるため、イラストは文字の横に小さく置く */
-	.home .process {
-		padding-block: 0.5rem 0;
-	}
-
-	.home .process .section__title {
-		margin-bottom: 0.5rem;
-	}
-
 	.process__list {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1.5rem;
-	}
-
-	.process__step {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.process__image {
-		flex: none;
-		width: 80px;
-	}
-
-	.process__body {
-		flex: 1;
-		min-width: 0;
-	}
-
-	.process__title {
-		margin-top: 0;
-		font-size: 1rem;
-	}
-
-	.process__text {
-		font-size: 0.8125rem;
-	}
-
-	.process__source {
-		margin-top: 0.25rem;
-		padding-top: 0.25rem;
+		gap: 1rem;
 	}
 
 	/* プロフィールへはヘッダーのメニューから行ける */
 	.home .section--muted {
 		display: none;
-	}
-
-	/* 作品カードは幅を固定して左から並べる（1366px 幅で 3 枚）。小さめの文字で詰める */
-	.home .work-grid {
-		grid-template-columns: repeat(auto-fill, 280px);
-		gap: 1rem;
-	}
-
-	.home .work-card__body {
-		padding: 0.625rem 0.75rem 0.75rem;
-	}
-
-	.home .work-card__title {
-		font-size: 0.9375rem;
-	}
-
-	.home .work-card__excerpt {
-		margin: 0.2rem 0 0.5rem;
-		font-size: 0.8125rem;
-		line-height: 1.6;
-	}
-
-	.home .work-card .tag-list {
-		gap: 0.25rem;
-	}
-
-	.home .work-card .tag {
-		padding: 0 0.45rem;
-		font-size: 0.6875rem;
-	}
-
-	.home .site-footer__inner {
-		padding-block: 0.75rem;
 	}
 }
 
