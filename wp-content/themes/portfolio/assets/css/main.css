@@ -122,16 +122,51 @@ code {
 	padding-block: 1rem;
 }
 
-.site-header__name {
+.site-brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.625rem;
 	color: var(--color-text);
-	font-weight: 700;
-	font-size: 1.125rem;
 	text-decoration: none;
 }
 
+/* ファビコンの「TO」。画像にせず文字で描き、色を --color-key にそろえる */
+.site-brand__logo {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	background: var(--color-key);
+	color: #ffffff;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.site-brand__text {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.25;
+}
+
+.site-brand__name {
+	font-weight: 700;
+	font-size: 1.125rem;
+}
+
+.site-brand__role {
+	color: var(--color-text-muted);
+	font-size: 0.75rem;
+}
+
+/* スマホは 1 段目に名前、2 段目にナビとボタン。項目は隠さず全部出す */
 .site-nav {
 	display: flex;
-	gap: 1.5rem;
+	flex: 1 0 100%;
+	align-items: center;
+	gap: 0.75rem;
 }
 
 .site-nav a {
@@ -141,6 +176,60 @@ code {
 
 .site-nav a:hover {
 	color: var(--color-key);
+}
+
+.site-nav__link {
+	padding-block: 0.125rem;
+	border-bottom: 2px solid transparent;
+	white-space: nowrap;
+}
+
+/* 今いるページの項目 */
+.site-nav__link[aria-current] {
+	border-bottom-color: var(--color-key);
+}
+
+.site-nav__icon {
+	display: inline-flex;
+}
+
+.site-nav .site-nav__contact {
+	margin-left: auto;
+	padding: 0.4rem 0.875rem;
+	border-radius: 999px;
+	color: #ffffff;
+	font-size: 0.8125rem;
+	white-space: nowrap;
+}
+
+.site-nav .site-nav__contact:hover {
+	color: #ffffff;
+}
+
+/* 極小の画面では少し詰めて 1 行に収める */
+@media (max-width: 359px) {
+	.site-nav {
+		gap: 0.5rem;
+		font-size: 0.875rem;
+	}
+
+	.site-nav .site-nav__contact {
+		padding-inline: 0.625rem;
+		font-size: 0.75rem;
+	}
+}
+
+@media (min-width: 680px) {
+	.site-nav {
+		flex: none;
+		gap: 1.25rem;
+	}
+
+	.site-nav .site-nav__contact {
+		margin-left: 0;
+		padding: 0.45rem 1.125rem;
+		font-size: 0.875rem;
+	}
 }
 
 .site-footer {

@@ -14,6 +14,11 @@ function portfolio_site_data() {
 		// トップの見出しの右上に出すバッジ
 		'hero_badges'  => array( 'Next.js', 'Laravel' ),
 
+		// ヘッダーのロゴの文字、名前の下の肩書き、相談ボタンのリンク先
+		'logo_text'    => 'TO',
+		'header_role'  => 'Web Developer',
+		'contact_url'  => 'https://forms.gle/SizQQz8tqX7aGNHU9',
+
 		// トップに出す自己紹介。meta description（抜粋のないページ）にも使う
 		'intro'        => 'FA機器のソフトウェア開発や営業の経験を経て、現在はLaravelやNext.jsでWebアプリケーション開発に取り組んでいます。',
 
