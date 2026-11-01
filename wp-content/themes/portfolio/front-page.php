@@ -11,7 +11,14 @@ get_header();
 
 <section class="hero">
 	<div class="container">
-		<h1 class="hero__title"><?php echo esc_html( $site['headline'] ); ?></h1>
+		<div class="hero__heading">
+			<h1 class="hero__title"><?php echo esc_html( $site['headline'] ); ?></h1>
+			<ul class="hero__badges">
+				<?php foreach ( $site['hero_badges'] as $badge ) : ?>
+					<li class="hero__badge"><?php echo esc_html( $badge ); ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
 		<p class="hero__intro"><?php echo esc_html( $site['intro'] ); ?></p>
 	</div>
 </section>

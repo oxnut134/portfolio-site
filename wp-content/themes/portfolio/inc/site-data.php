@@ -9,10 +9,13 @@ function portfolio_site_data() {
 		'title_tagline' => 'Web エンジニア ポートフォリオ',
 
 		// トップの見出し
-		'headline'     => 'Next.js と Laravel で、設計から公開まで一貫して対応します。',
+		'headline'     => '設計から公開まで一貫して対応します。',
+
+		// トップの見出しの右上に出すバッジ
+		'hero_badges'  => array( 'Next.js', 'Laravel' ),
 
 		// トップに出す自己紹介。meta description（抜粋のないページ）にも使う
-		'intro'        => 'FA機器関連のソフトウェア開発や営業・組織運営の経験を経て、現在はLaravelやNext.jsを中心としたWebアプリケーション開発に取り組んでいます。これまで培ってきた要件理解やユーザー視点も活かしながら、使いやすさと保守性を意識した開発を行っています。',
+		'intro'        => 'FA機器のソフトウェア開発や営業の経験を経て、現在はLaravelやNext.jsでWebアプリケーション開発に取り組んでいます。',
 
 		// トップの「仕事の進め方」。image は assets/images/ のファイル名
 		'process_steps' => array(

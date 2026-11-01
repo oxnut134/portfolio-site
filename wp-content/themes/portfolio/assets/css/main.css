@@ -252,14 +252,83 @@ code {
 }
 
 .hero__title {
+	position: relative;
+	z-index: 1; /* バッジを重ねても文字が隠れないよう、バッジより手前に出す */
 	margin: 0;
 	font-size: clamp(2rem, 6vw, 3rem);
+	text-align: center;
+}
+
+/* バッジは見出しの左肩に、下端が文字に少しかかるように置く。
+   HTML では見出しの後ろなので、order で上に出す */
+.hero__heading {
+	display: flex;
+	flex-direction: column;
+}
+
+.hero__badges {
+	display: flex;
+	order: -1;
+	justify-content: flex-start;
+	gap: 0.5rem;
+	margin: 0 0 -0.25rem;
+	padding: 0;
+	list-style: none;
+}
+
+.hero__badge {
+	position: relative;
+	padding: 0.45rem 1.5rem;
+	border: 2px solid var(--color-key);
+	border-radius: 50%;
+	background: #ffffff;
+	color: var(--color-key);
+	font-size: 1.3125rem;
+	font-weight: 700;
+	line-height: 1.4;
+	white-space: nowrap;
+	transform: rotate(-8deg);
+}
+
+/* 右へ下がる分だけ持ち上げて、2 つの下端の高さをそろえる */
+.hero__badge:nth-child(2) {
+	transform: translateY(-2px) rotate(6deg);
+}
+
+/* 2 つ並ぶ幅がない極小の画面だけ、横の余白を減らす */
+@media (max-width: 359px) {
+	.hero__badges {
+		gap: 0.25rem;
+	}
+
+	.hero__badge {
+		padding-inline: 1rem;
+	}
+}
+
+/* 768px 以上はバッジを大きくする。スマホは 2 つ並ぶ幅がないので小さいまま */
+@media (min-width: 768px) {
+	.hero__heading {
+		width: fit-content;
+		margin-inline: auto;
+	}
+
+	.hero__badges {
+		gap: 0.75rem;
+		margin-bottom: -0.625rem;
+	}
+
+	.hero__badge {
+		padding: 0.675rem 2.25rem;
+		font-size: 1.96875rem;
+	}
 }
 
 .hero__intro {
 	margin: 1rem 0 0;
 	color: var(--color-text-muted);
-	font-size: 1.125rem;
+	font-size: 1rem;
+	text-align: center;
 }
 
 /* トップのセクションは余白と区切り線ではっきり分ける */
