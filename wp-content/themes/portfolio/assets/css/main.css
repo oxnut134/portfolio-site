@@ -8,6 +8,8 @@
 	--color-key: #2f7f79;       /* リンク・ボタン・見出しの飾り・種別ラベル */
 	--color-key-dark: #24635e;  /* ホバー。薄い色の上の文字にも使う（キーカラーだとコントラストが足りない） */
 	--color-key-light: #e6f2f1; /* 技術タグなどの背景 */
+	--color-try: #c62828;       /* 「お試し」ボタン。白文字で読める濃さ */
+	--color-try-dark: #a31f1f;  /* そのホバー */
 	--color-text: #1f2933;
 	--color-text-muted: #5b6672;
 	--color-bg: #ffffff;
@@ -197,6 +199,15 @@ code {
 .button:hover {
 	background: var(--color-key-dark);
 	color: #ffffff;
+}
+
+.button--try {
+	border-radius: 999px;
+	background: var(--color-try);
+}
+
+.button--try:hover {
+	background: var(--color-try-dark);
 }
 
 .tag-list {
@@ -405,10 +416,10 @@ code {
 }
 
 .work-card {
+	position: relative;
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius);
 	background: var(--color-bg);
-	overflow: hidden;
 	transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
@@ -423,7 +434,7 @@ code {
 
 /* :has() が使えるブラウザでは、マウスでクリックしたときのフォーカスでは出さず、
    キーボードで選んだとき（:focus-visible）だけにする。カードの線が目印になるので、
-   リンク自身の枠（カードの overflow: hidden で切れる）は消す */
+   リンク自身の枠は消す */
 @supports selector(:has(*)) {
 	.work-card:focus-within:not(:hover):not(:has(:focus-visible)) {
 		border-color: var(--color-border);
@@ -452,9 +463,12 @@ code {
 	text-decoration: none;
 }
 
+/* お試しボタンがはみ出せるよう、カードではなく画像の枠で角を丸める */
 .work-card__image {
 	position: relative;
+	overflow: hidden;
 	aspect-ratio: 16 / 10;
+	border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
 	border-bottom: 1px solid var(--color-border);
 	background: var(--color-bg-muted);
 }
@@ -487,6 +501,16 @@ code {
 .work-card__title {
 	margin: 0;
 	font-size: 1.125rem;
+}
+
+/* 「お試し」はカードのリンクの外に置き、画像の右上の角に重ねて少しはみ出す */
+.work-card__actions {
+	position: absolute;
+	top: -0.625rem;
+	right: -0.625rem;
+	z-index: 1;
+	margin: 0;
+	transform: rotate(6deg);
 }
 
 .work-card__excerpt {

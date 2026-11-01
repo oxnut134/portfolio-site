@@ -3,8 +3,14 @@
  * 作品カード。作品のループの中で呼ぶ。
  */
 
-$techs = get_the_terms( get_the_ID(), 'tech' );
+$terms = get_the_terms( get_the_ID(), 'tech' );
+$techs = ( $terms && ! is_wp_error( $terms ) ) ? wp_list_pluck( $terms, 'name' ) : array();
 $kind  = portfolio_work_meta( '_work_kind' );
+$demo  = portfolio_work_meta( '_work_demo_url' );
+
+// カードのタグは site-data の指定に絞る。指定がない作品は先頭の 3 つ
+$card_techs = portfolio_site_data()['card_techs'][ get_post_field( 'post_name' ) ] ?? $techs;
+$card_techs = array_slice( array_intersect( $card_techs, $techs ), 0, 3 );
 ?>
 <article class="work-card">
 	<a class="work-card__link" href="<?php the_permalink(); ?>">
@@ -23,13 +29,25 @@ $kind  = portfolio_work_meta( '_work_kind' );
 			<?php if ( has_excerpt() ) : ?>
 				<p class="work-card__excerpt"><?php echo esc_html( get_the_excerpt() ); ?></p>
 			<?php endif; ?>
-			<?php if ( $techs && ! is_wp_error( $techs ) ) : ?>
+			<?php if ( $card_techs ) : ?>
 				<ul class="tag-list">
-					<?php foreach ( $techs as $tech ) : ?>
-						<li class="tag"><?php echo esc_html( $tech->name ); ?></li>
+					<?php foreach ( $card_techs as $tech ) : ?>
+						<li class="tag"><?php echo esc_html( $tech ); ?></li>
 					<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>
 		</div>
 	</a>
+	<?php // カード全体が詳細ページへのリンクなので、入れ子にしないようリンクの外に置く ?>
+	<?php if ( $demo ) : ?>
+		<p class="work-card__actions">
+			<a
+				class="button button--try"
+				href="<?php echo esc_url( $demo ); ?>"
+				target="_blank"
+				rel="noopener"
+				aria-label="<?php the_title_attribute(); ?>をお試し（新しいタブで開く）"
+			>お試し</a>
+		</p>
+	<?php endif; ?>
 </article>

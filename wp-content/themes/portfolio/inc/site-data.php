@@ -45,6 +45,13 @@ function portfolio_site_data() {
 			),
 		),
 
+		// トップの作品カードに出す技術タグ（作品のスラッグ => 3 つまで）。詳細ページには全部出る
+		'card_techs'    => array(
+			'qualitative-research' => array( 'Laravel', 'PHPUnit', 'PHPStan' ),
+			'frea-market'          => array( 'Laravel', 'Stripe', 'PostgreSQL' ),
+			'wandering-log'        => array( 'Next.js', 'TypeScript', 'Google Maps API' ),
+		),
+
 		// プロフィールへの導線に添える文（仮）
 		'profile_lead' => '経歴と、扱える技術をまとめています。',
 		// プロフィールの履歴
