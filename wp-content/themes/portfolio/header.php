@@ -4,7 +4,8 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="<?php echo esc_attr( portfolio_meta_description() ); ?>">
-	<link rel="icon" type="image/png" href="<?php echo esc_url( get_template_directory_uri() . '/favicon.png' ); ?>">
+	<?php // ブラウザはファビコンを URL ごとに長く保存するので、画像を変えたら URL も変わるようにする ?>
+	<link rel="icon" type="image/png" href="<?php echo esc_url( add_query_arg( 'v', filemtime( get_theme_file_path( 'favicon.png' ) ), get_theme_file_uri( 'favicon.png' ) ) ); ?>">
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
