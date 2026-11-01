@@ -16,6 +16,8 @@ get_header();
 	</div>
 </section>
 
+<?php get_template_part( 'template-parts/process-steps' ); ?>
+
 <section class="section" id="works" aria-labelledby="works-heading">
 	<div class="container">
 		<h2 class="section__title" id="works-heading">作品</h2>

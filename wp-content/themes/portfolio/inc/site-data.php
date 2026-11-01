@@ -14,6 +14,34 @@ function portfolio_site_data() {
 		// トップに出す自己紹介。meta description（抜粋のないページ）にも使う
 		'intro'        => 'FA機器関連のソフトウェア開発や営業・組織運営の経験を経て、現在はLaravelやNext.jsを中心としたWebアプリケーション開発に取り組んでいます。これまで培ってきた要件理解やユーザー視点も活かしながら、使いやすさと保守性を意識した開発を行っています。',
 
+		// トップの「仕事の進め方」。image は assets/images/ のファイル名
+		'process_steps' => array(
+			array(
+				'image'  => 'step1-hearing.webp',
+				'title'  => '聞く',
+				'text'   => '要望・課題の整理',
+				'source' => '営業・事務局運営',
+			),
+			array(
+				'image'  => 'step2-idea.webp',
+				'title'  => '決める',
+				'text'   => '要件定義・設計',
+				'source' => 'FA機器開発 約15年',
+			),
+			array(
+				'image'  => 'step3-coding.webp',
+				'title'  => '作る',
+				'text'   => '実装・テスト',
+				'source' => 'Next.js・Laravel',
+			),
+			array(
+				'image'  => 'step4-delivery.webp',
+				'title'  => '届ける',
+				'text'   => '公開・運用',
+				'source' => 'デプロイ・顧客サポート',
+			),
+		),
+
 		// プロフィールへの導線に添える文（仮）
 		'profile_lead' => '経歴と、扱える技術をまとめています。',
 		// プロフィールの履歴
