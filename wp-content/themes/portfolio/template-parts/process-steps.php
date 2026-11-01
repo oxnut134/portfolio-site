@@ -7,8 +7,7 @@ $steps = portfolio_site_data()['process_steps'];
 ?>
 <section class="section process" aria-labelledby="process-heading">
 	<div class="container">
-		<h2 class="section__title" id="process-heading">仕事の進め方</h2>
-
+		
 		<ol class="process__list">
 			<?php foreach ( $steps as $index => $step ) : ?>
 				<li class="process__step">

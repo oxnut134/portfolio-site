@@ -352,12 +352,19 @@ code {
 .process__image {
 	display: block;
 	width: 100%;
+	max-width: 180px;
 	height: auto;
+	margin-inline: auto;
+}
+
+.process__body {
+	text-align: center;
 }
 
 .process__title {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 0.5rem;
 	margin: 0.5rem 0 0;
 	font-size: 1.125rem;
