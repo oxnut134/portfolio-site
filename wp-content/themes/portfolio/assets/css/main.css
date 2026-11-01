@@ -117,7 +117,7 @@ code {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	gap: 0.5rem 1.5rem;
 	padding-block: 1rem;
 }
@@ -130,7 +130,7 @@ code {
 	text-decoration: none;
 }
 
-/* ファビコンの「TO」。画像にせず文字で描き、色を --color-key にそろえる */
+/* ファビコンの「To」。画像にせず文字で描き、色を --color-key にそろえる */
 .site-brand__logo {
 	display: grid;
 	place-items: center;
@@ -140,7 +140,7 @@ code {
 	border-radius: 50%;
 	background: var(--color-key);
 	color: #ffffff;
-	font-size: 1rem;
+	font-size: 1.1875rem;
 	font-weight: 700;
 	line-height: 1;
 }
@@ -161,11 +161,12 @@ code {
 	font-size: 0.75rem;
 }
 
-/* スマホは 1 段目に名前、2 段目にナビとボタン。項目は隠さず全部出す */
+/* スマホは 1 段目に名前、2 段目にナビとボタンを、どちらも中央に置く。項目は隠さず全部出す */
 .site-nav {
 	display: flex;
 	flex: 1 0 100%;
 	align-items: center;
+	justify-content: center;
 	gap: 0.75rem;
 }
 
@@ -194,7 +195,6 @@ code {
 }
 
 .site-nav .site-nav__contact {
-	margin-left: auto;
 	padding: 0.4rem 0.875rem;
 	border-radius: 999px;
 	color: #ffffff;
@@ -220,13 +220,16 @@ code {
 }
 
 @media (min-width: 680px) {
+	.site-header__inner {
+		justify-content: space-between;
+	}
+
 	.site-nav {
 		flex: none;
 		gap: 1.25rem;
 	}
 
 	.site-nav .site-nav__contact {
-		margin-left: 0;
 		padding: 0.45rem 1.125rem;
 		font-size: 0.875rem;
 	}

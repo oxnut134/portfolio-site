@@ -15,7 +15,7 @@ function portfolio_site_data() {
 		'hero_badges'  => array( 'Next.js', 'Laravel' ),
 
 		// ヘッダーのロゴの文字、名前の下の肩書き、相談ボタンのリンク先
-		'logo_text'    => 'TO',
+		'logo_text'    => 'To',
 		'header_role'  => 'Web Developer',
 		'contact_url'  => 'https://forms.gle/SizQQz8tqX7aGNHU9',
 
