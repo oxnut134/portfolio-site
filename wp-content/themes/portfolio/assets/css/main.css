@@ -23,6 +23,8 @@
 	--width-narrow: 760px;
 	--space-page: 1.25rem;
 	--radius: 8px;
+	--color-try-dark: #a31f1f;  /* そのホバー */
+	--color-kind: #2e5e9a;      /* 種別ラベル（実務・個人開発）。キーカラーと明るさをそろえた青 */
 }
 
 /* ---------- 基本 ---------- */
@@ -579,7 +581,7 @@ code {
 	left: 0.5rem;
 	padding: 0 0.5rem;
 	border-radius: 4px;
-	background: var(--color-key);
+	background: var(--color-kind);
 	color: #ffffff;
 	font-size: 0.75rem;
 	font-weight: 700;
