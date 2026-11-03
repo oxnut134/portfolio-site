@@ -79,6 +79,21 @@ function portfolio_work_fields() {
 			'type'  => 'textarea',
 			'help'  => '作品ページのタイトルの下、抜粋の次に小さめに出す（制作の経緯など）。トップのカードには出ない。',
 		),
+		'_work_role'         => array(
+			'label' => '担当',
+			'type'  => 'text',
+			'help'  => '作品ページ上部の概要カードに出す。例: 設計・実装・テスト・公開（一人で）',
+		),
+		'_work_period'       => array(
+			'label' => '期間',
+			'type'  => 'text',
+			'help'  => '概要カードに出す。例: 2026年3月〜5月',
+		),
+		'_work_highlight'    => array(
+			'label' => '見どころ',
+			'type'  => 'textarea',
+			'help'  => '概要カードに出す一言。工夫した点のいちばんの要点を 1 文で。',
+		),
 		'_work_demo_url'     => array(
 			'label' => 'デモ URL',
 			'type'  => 'url',

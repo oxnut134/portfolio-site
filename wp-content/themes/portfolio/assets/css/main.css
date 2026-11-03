@@ -304,6 +304,19 @@ code {
 	background: var(--color-try-dark);
 }
 
+/* 枠線だけのボタン。「お試し」の横に並べる控えめな方 */
+.button--outline {
+	border: 2px solid var(--color-key);
+	background: transparent;
+	color: var(--color-key-dark);
+}
+
+.button--outline:hover {
+	border-color: var(--color-key-dark);
+	background: var(--color-key-light);
+	color: var(--color-key-dark);
+}
+
 .tag-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -627,6 +640,68 @@ code {
 }
 
 /* ---------- 作品詳細 ---------- */
+
+/* 種別（実務・個人開発）。カードのラベルと同じ見た目でタイトルの上に置く */
+.work__kind {
+	display: inline-block;
+	margin: 0 0 0.6rem;
+	padding: 0 0.5rem;
+	border-radius: 4px;
+	background: var(--color-kind);
+	color: #ffffff;
+	font-size: 0.75rem;
+	font-weight: 700;
+	line-height: 1.7;
+}
+
+/* デモ・GitHub のボタン。狭い幅では折り返す */
+.work__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin: 1.5rem 0 0;
+}
+
+/* 概要カード（担当・期間・技術・見どころ）。最初の一画面で要点が分かるように */
+.work-summary {
+	margin-bottom: 2rem;
+	padding: 1.25rem 1.5rem;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+}
+
+.work-summary__list {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.15rem 1.5rem;
+	margin: 0;
+}
+
+.work-summary__list dt {
+	color: var(--color-text-muted);
+	font-size: 0.875rem;
+	font-weight: 700;
+}
+
+.work-summary__list dd {
+	margin: 0 0 0.75rem;
+}
+
+.work-summary__list dd:last-child {
+	margin-bottom: 0;
+}
+
+@media (min-width: 600px) {
+	.work-summary__list {
+		grid-template-columns: max-content 1fr;
+		gap: 0.75rem 1.5rem;
+		align-items: baseline;
+	}
+
+	.work-summary__list dd {
+		margin: 0;
+	}
+}
 
 .work__meta {
 	margin-bottom: 2rem;
