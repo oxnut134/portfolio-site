@@ -81,7 +81,7 @@ function portfolio_site_data() {
 			array(
 				'period' => '2024～2026',
 				'title'  => 'Webアプリ開発',
-				'text'   => '2025年3月～9月　COACHTECH受講(HTML/CSS/Laravel/PHP/MySQL/Docker,等)
+				'text'   => '2025年3月～9月　プログラミングスクール受講(HTML/CSS/Laravel/PHP/MySQL/Docker,等)
 2025年10月～12月　フロントエンド習得(JavaScript/Next.js/React/TypeScript, 等）
 2026年1月　プロテスト合格
 2026年1月～6月
