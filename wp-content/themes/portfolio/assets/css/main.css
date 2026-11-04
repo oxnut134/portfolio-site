@@ -376,7 +376,7 @@ code {
 /* ---------- トップ ---------- */
 
 .hero {
-	padding-block: clamp(1.75rem, 4vw, 3rem);
+	padding-block: clamp(1.75rem, 4vw, 3rem) clamp(1rem, 2.5vw, 1.75rem);
 }
 
 .hero__title {
@@ -387,7 +387,7 @@ code {
 	text-align: center;
 }
 
-/* バッジは見出しの左肩に、下端が文字に少しかかるように置く。
+/* バッジは見出しの左肩に、少しすき間を空けて置く。
    HTML では見出しの後ろなので、order で上に出す */
 .hero__heading {
 	display: flex;
@@ -399,7 +399,7 @@ code {
 	order: -1;
 	justify-content: flex-start;
 	gap: 0.5rem;
-	margin: 0 0 -0.25rem;
+	margin: 0 0 0.5rem;
 	padding: 0;
 	list-style: none;
 }
@@ -443,7 +443,7 @@ code {
 
 	.hero__badges {
 		gap: 0.75rem;
-		margin-bottom: -0.625rem;
+		margin-bottom: 0.75rem;
 	}
 
 	.hero__badge {
@@ -453,10 +453,12 @@ code {
 }
 
 .hero__intro {
-	margin: 1rem 0 0;
+	margin: 1rem 0 0.5em;
 	color: var(--color-text-muted);
 	font-size: 1rem;
 	text-align: center;
+	transform: scaleY(1.25);
+	transform-origin: center top;
 }
 
 /* トップのセクションは余白と区切り線ではっきり分ける */
@@ -811,4 +813,15 @@ code {
 	color: var(--color-text-muted);
 	font-size: 0.875rem;
 	text-align: center;
+}
+
+/* 「仕事の進め方」の上を詰める */
+.process {
+	padding-top: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+/* イラストは正方形で上下に白い余白があるので、少し横長に切り出して詰める */
+.process__image {
+	aspect-ratio: 5 / 4;
+	object-fit: cover;
 }
