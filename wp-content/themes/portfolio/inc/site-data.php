@@ -88,9 +88,9 @@ function portfolio_site_data() {
 　アプリ開発・ポートフォリオ作成（shop-reminder, wandering-log,他）
 　利用技術：Next.js/React/TypeScript,/postgreSQL/MySQL
 　　　　　　Render/Vercel/googleMapsAPI/AI/Claude
-2026年6月～現在
-　Webサービス開発の実務案件に参画。PHPを用いた開発、GitHub上でのPR作成・レビュー対応、テストコードの拡充等を継続的に担当  
-',
+2026年7月～9月
+　Webサービス開発の実務案件に参画。PHPを用いた開発、GitHub上でのPR作成・レビュー対応、テストコードの拡
+　充等を担当',
 			),
 
 		),
