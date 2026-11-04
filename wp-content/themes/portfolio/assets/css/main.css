@@ -8,8 +8,9 @@
 	--color-key: #2f7f79;       /* リンク・ボタン・見出しの飾り・種別ラベル */
 	--color-key-dark: #24635e;  /* ホバー。薄い色の上の文字にも使う（キーカラーだとコントラストが足りない） */
 	--color-key-light: #e6f2f1; /* 技術タグなどの背景 */
-	--color-try: #c62828;       /* 「お試し」ボタン。白文字で読める濃さ */
-	--color-try-dark: #a31f1f;  /* そのホバー */
+	--color-try: #e07b39;       /* 「お試し」「開発の相談をする」ボタン。オレンジ（キーカラーの反対色） */
+	--color-try-dark: #c2622d;  /* そのホバー */
+	--color-header-bg: #eef6f5; /* ヘッダーの背景。キーカラーをごく薄くした色 */
 	--color-text: #1f2933;
 	--color-text-muted: #5b6672;
 	--color-bg: #ffffff;
@@ -23,7 +24,6 @@
 	--width-narrow: 760px;
 	--space-page: 1.25rem;
 	--radius: 8px;
-	--color-try-dark: #a31f1f;  /* そのホバー */
 	--color-kind: #2e5e9a;      /* 種別ラベル（実務・個人開発）。キーカラーと明るさをそろえた青 */
 }
 
@@ -113,6 +113,7 @@ code {
 
 .site-header {
 	border-bottom: 1px solid var(--color-border);
+	background: var(--color-header-bg);
 }
 
 .site-header__inner {
@@ -132,7 +133,7 @@ code {
 	text-decoration: none;
 }
 
-/* ファビコンの「To」。画像にせず文字で描き、色を --color-key にそろえる */
+/* ファビコンの「To」。画像にせず文字で描き、色を種別ラベルの青にそろえる */
 .site-brand__logo {
 	display: grid;
 	place-items: center;
@@ -140,7 +141,7 @@ code {
 	width: 2.5rem;
 	height: 2.5rem;
 	border-radius: 50%;
-	background: var(--color-key);
+	background: var(--color-kind);
 	color: #ffffff;
 	font-size: 1.1875rem;
 	font-weight: 700;
@@ -199,12 +200,14 @@ code {
 .site-nav .site-nav__contact {
 	padding: 0.4rem 0.875rem;
 	border-radius: 999px;
+	background: var(--color-try);
 	color: #ffffff;
 	font-size: 0.8125rem;
 	white-space: nowrap;
 }
 
 .site-nav .site-nav__contact:hover {
+	background: var(--color-try-dark);
 	color: #ffffff;
 }
 
