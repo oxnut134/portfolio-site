@@ -27,7 +27,7 @@ get_header();
 
 <section class="section" id="works" aria-labelledby="works-heading">
 	<div class="container">
-		<h2 class="section__title" id="works-heading">作品</h2>
+		<h2 class="section__title" id="works-heading">作品<span class="section__note">カードをクリックすると詳細が表示されます</span></h2>
 
 		<?php if ( $works->have_posts() ) : ?>
 			<div class="work-grid">
